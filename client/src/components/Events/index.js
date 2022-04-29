@@ -63,7 +63,7 @@ const getItems = () => [
                         itemId={id} // NOTE: itemId is required for track items
                         title={event}
                         category={category}
-                        image={image}
+                        myImg={image}
                         description={description}
                         attending={attending}
                         key={id}
@@ -96,9 +96,9 @@ function RightArrow() {
     );
 }
 
-function Card({ onClick, selected, title, image, description, attending, itemId }) {
+function Card({ onClick, selected, title, myImg, description, attending, itemId }) {
     const visibility = React.useContext(VisibilityContext);
-    console.log({image})
+    console.log({myImg})
     return (
         <div
             onClick={() => onClick(visibility)}
@@ -109,7 +109,7 @@ function Card({ onClick, selected, title, image, description, attending, itemId 
         >
             <div className="event-card">
                 <div><h2>{title}</h2></div>
-                <img scr={image} alt='' className="resumeImage" ></img>
+                <img src={myImg.default} alt='' ></img>
                 <div>
                     <h3>Description</h3>
                 </div>
