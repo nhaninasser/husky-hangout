@@ -1,7 +1,7 @@
 .main-background-color {
   background-color: rgb(124,135,142);
-  padding-top: 201px;
-  padding-bottom: 326px;
+  padding-top: 115px;
+  padding-bottom: 0px;
   right: 0;
 }
 
@@ -18,3 +18,46 @@
   width:30%;
 }
 
+.eventDescription {
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-right:10px;
+  padding-left:10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background-color: rgb(255,255,255);
+  border-radius: 7px;
+}
+
+.description-align {
+  margin: 0 auto;
+  display: flex;
+  vertical-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-title {
+  margin: 0 auto;
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+}
+
+.attending {
+  margin: 0 auto;
+  display: flex;
+  vertical-align: middle;
+  justify-content: right;
+  align-items: right;
+  margin-right: 15px;
+}
+
+.text {
+height: 100px;
+text-align: justify;
+padding: 5px;
+overflow: auto;
+}

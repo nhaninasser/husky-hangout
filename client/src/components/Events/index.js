@@ -16,7 +16,7 @@ const getItems = () => [
             event: 'hockey',
             category: 'Sports',
             image: {hockey},
-            description: 'this is a hockey event for college students',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             attending: 52
         },
         {
@@ -24,7 +24,7 @@ const getItems = () => [
             event: 'House Party',
             category: 'Party',
             image: '',
-            description: 'Want to party, head over! Shots Shots Shots!',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             attending: 965
         },
         {
@@ -32,7 +32,7 @@ const getItems = () => [
             event: 'Knitting',
             category: 'Crafts',
             image: '',
-            description: 'create something great with your closest group of friends!',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             attending: 45
         }
     ];
@@ -108,13 +108,13 @@ function Card({ onClick, selected, title, myImg, description, attending, itemId 
             tabIndex={0}
         >
             <div className="event-card">
-                <div><h2>{title}</h2></div>
+                <div className="event-title"><h2>{title}</h2></div>
                 <img src={myImg.default} alt='' ></img>
-                <div>
+                <div className="description-align">
                     <h3>Description</h3>
                 </div>
-                <div>{description}</div>
-                <div>
+                <div className="eventDescription"><h5 className="text">{description}</h5></div>
+                <div className="attending">
                     <h5>Attending: {attending}</h5>
                 </div>
                 {/* <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
