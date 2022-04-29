@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
-import Arrow from 'react-arrows'
+import Arrow from 'react-arrows';
+import hockey from './assets/images/hockey.png';
+
+
 
 // const getItems = () =>
 //   Array(10)
@@ -12,7 +15,7 @@ const getItems = () => [
             id: 1,
             event: 'hockey',
             category: 'Sports',
-            image: '',
+            image: {hockey},
             description: 'this is a hockey event for college students',
             attending: 52
         },
@@ -35,8 +38,8 @@ const getItems = () => [
     ];
 
     function Events() {
-        const [items, setItem] = React.useState(getItems);
-        const [selected, setSelected] = React.useState([]);
+        const [items, setItem] = useState(getItems);
+        const [selected, setSelected] = useState([]);
         // const [position, setPosition] = React.useState(0);
 
         const isItemSelected = (id) => !!selected.find((el) => el === id);
@@ -95,7 +98,7 @@ function RightArrow() {
 
 function Card({ onClick, selected, title, image, description, attending, itemId }) {
     const visibility = React.useContext(VisibilityContext);
-
+    console.log({image})
     return (
         <div
             onClick={() => onClick(visibility)}
@@ -106,7 +109,7 @@ function Card({ onClick, selected, title, image, description, attending, itemId 
         >
             <div className="event-card">
                 <div><h2>{title}</h2></div>
-                <div>{image}</div>
+                <img scr={image} alt='' className="resumeImage" ></img>
                 <div>
                     <h3>Description</h3>
                 </div>
