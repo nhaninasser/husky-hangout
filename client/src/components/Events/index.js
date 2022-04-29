@@ -29,7 +29,7 @@ const getItems = () => [
         },
         {
             id: 3,
-            event: 'Crocket',
+            event: 'Knitting',
             category: 'Crafts',
             image: '',
             description: 'create something great with your closest group of friends!',
