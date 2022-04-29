@@ -19,6 +19,7 @@
     "dependencies": {
         "apollo-server-express": "^3.6.7",
         "graphql": "^15.8.0",
+        "graphql-upload": "^13.0.0",
         "mongoose": "^6.3.1"
     }
 }
