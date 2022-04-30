@@ -41,7 +41,7 @@ const getItems = () => [
     }
 ];
 
-function Events() {
+function EventsMobile() {
     const { isDesktop } = useScreenSize();
     const [items, setItem] = useState(getItems);
     const [selected, setSelected] = useState([]);
@@ -140,27 +140,5 @@ function Card({ onClick, selected, title, myImg, description, attending, itemId 
     );
 }
 
-function DesktopEvents () {
-    const [items, setItem] = useState(getItems);
-    const [selected, setSelected] = useState([]);
-    // const [position, setPosition] = React.useState(0);
 
-    const isItemSelected = (id) => !!selected.find((el) => el === id);
-
-    const handleClick =
-        (id) =>
-            ({ getItemById, scrollToItem }) => {
-                const itemSelected = isItemSelected(id);
-
-                setSelected((currentSelected) =>
-                    itemSelected
-                        ? currentSelected.filter((el) => el !== id)
-                        : currentSelected.concat(id)
-                );
-            };
-            return (
-                <div>Desktop is working</div>
-            )
-}
-
-export default Events;
+export default EventsMobile;
