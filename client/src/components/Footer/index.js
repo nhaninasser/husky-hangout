@@ -6,6 +6,7 @@ import { FaWolfPackBattalion } from "react-icons/fa";
 import ArchiveIcon from '@mui/icons-material/Archive';
 import Paper from '@mui/material/Paper';
 import useScreenSize from '../../hooks/screenSize/useScreenSize';
+
 export default function FixedBottomNavigation() {
     const { isDesktop } = useScreenSize();
     const [value, setValue] = React.useState(0);
