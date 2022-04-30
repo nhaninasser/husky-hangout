@@ -62,7 +62,8 @@ function EventsMobile() {
             };
     return !isDesktop && (
         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-            {items.map(({ id, event, category, image, description, attending }) => (
+            {items.map(({ id, event, category, image, description, attending }) => {
+                return (
                 <Card
                     itemId={id} // NOTE: itemId is required for track items
                     title={event}
@@ -74,7 +75,7 @@ function EventsMobile() {
                     onClick={handleClick(id)}
                     selected={isItemSelected(id)}
                 />
-            ))}
+            )})}
         </ScrollMenu>
     );
 }
@@ -128,8 +129,8 @@ function Card({ onClick, selected, title, myImg, description, attending, itemId 
                 <div className="attending">
                     <h5>Attending: {attending}</h5>
                 </div>
-                {/* <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
-                <div>selected: {JSON.stringify(!!selected)}</div> */}
+                <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
+                <div>selected: {JSON.stringify(!!selected)}</div>
             </div>
             <div
                 style={{
