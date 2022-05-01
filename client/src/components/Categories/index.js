@@ -2,31 +2,27 @@ import React, { useState } from 'react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import Arrow from 'react-arrows';
 import useStoreContext from '../../utils/GlobalState';
+import StoreProvider from '../../utils/GlobalState'
 
 // const getItems = () =>
 //   Array(10)
 //     .fill(0)
 //     .map((_, ind) => ({ id: `${ind}`}));
 
-const categories = () => [
-    {
-        id: 1,
-        category: 'Sports',
-    },
-    {
-        id: 2,
-        category: 'Party',
-
-    },
-    {
-        id: 3,
-        category: 'Crafts',
-    }
-];
-
 
 function Categories() {
-    const [items, setItem] = useState(categories);
+
+    const [items] = useState( [
+        {
+            category: 'Sports',
+        },
+        {
+            category: 'Party',
+        },
+        {
+            category: 'Crafts',
+        }
+    ]);
     const [selected, setSelected] = useState([]);
     // const [position, setPosition] = React.useState(0);
 
@@ -43,16 +39,18 @@ function Categories() {
                         : currentSelected.concat(id)
                 );
             };
+            console.log(selected)
     return (
         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-            {items.map(({ id, category }) => (
+            {items.map(({ category }) => (
+                <div className="bully">
                 <CategoryCard
-                    itemId={id} // NOTE: itemId is required for track items
+                    itemId={category} // NOTE: itemId is required for track items
                     category={category}
-                    key={id}
-                    onClick={handleClick(id)}
-                    selected={isItemSelected(id)}
+                    onClick={handleClick(category)}
+                    setSelected={isItemSelected(category)}
                 />
+                </div>
             ))}
         </ScrollMenu>
     );
@@ -91,8 +89,8 @@ function CategoryCard({ onClick, selected, category, itemId, key }) {
         >
             <div className="category-card">
                 <div className="category-title"><h2>{category}</h2></div>
-                <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
-                <div>selected: {JSON.stringify(!!selected)}</div>
+                {/* <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
+                <div>selected: {JSON.stringify(!!selected)}</div> */}
             </div>
             <div
                 // style={{

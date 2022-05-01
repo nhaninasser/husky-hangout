@@ -6,6 +6,18 @@ const StoreContext = createContext();
 export function StoreProvider({ children }) {
     const [globalState, setGlobalState ] = useState({
         selectedCategory: undefined,
+        categories: [
+            {
+                category: 'Sports',
+            },
+            {
+                category: 'Party',
+            },
+            {
+                category: 'Crafts',
+            }
+        ]
+        
 });
 
 function selectCategory(categoryName) {
