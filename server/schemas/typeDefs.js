@@ -5,11 +5,21 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    events: [Event]
   }
 
   type Event {
     _id: ID
     eventText: String
+    createdAt: String
+    username: String
+    commentCount: Int
+    comments: [Comment]
+  }
+
+  type Comment {
+    _id: ID
+    reactionBody: String
     createdAt: String
     username: String
   }
@@ -29,8 +39,9 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(firstName: String! lastName: String! username: String!, email: String!, password: String!): Auth
-    addEvent(eventText: String!): Event      
+    addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
+    addEvent(eventText: String!): Event 
+    addReaction(reactionId: ID!, reactionBody: String!): Event     
   }
 `;
 
