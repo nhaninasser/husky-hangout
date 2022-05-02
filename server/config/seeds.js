@@ -1,9 +1,9 @@
 const db = require("./connection");
-const { Category, Event } = require("../models");
+const { Category, Event, User } = require("../models");
 
-import hockey from '../../client/src/components/Events/assets/images/hockey.png';
-import party from '../../client/src/components/Events/assets/images/houseParty.jpg';
-import knitting from '../../client/src/components/Events/assets/images/knitting.jpg';
+// import hockey from '../../client/src/components/Events/assets/images/hockey.png';
+// import party from '../../client/src/components/Events/assets/images/houseParty.jpg';
+// import knitting from '../../client/src/components/Events/assets/images/knitting.jpg';
 
 db.once("open", async () => {
   await Category.deleteMany();
@@ -21,25 +21,28 @@ db.once("open", async () => {
     {
       event: "hockey",
       category: categories[0]._id,
-      image: hockey,
-      description:
+      // image: hockey,
+      eventText:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      username: "fullmetal",
       attending: 52,
     },
     {
       event: "House Party",
       category: categories[1]._id,
-      image: party,
-      description:
+      // image: party,
+      eventText:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      username: "fullmetal",
       attending: 965,
     },
     {
       event: "Knitting",
       category: categories[2]._id,
-      image: knitting,
-      description:
+      // image: knitting,
+      eventText:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      username: "fullmetal",
       attending: 45,
     },
   ]);
@@ -51,6 +54,7 @@ db.once("open", async () => {
     firstName: "Edward",
     lastName: "Elrick",
     email: "fma112@test.com",
+    username: "fullmetal",
     password: "password12345",
     orders: [
       {
@@ -63,6 +67,7 @@ db.once("open", async () => {
     firstName: "Cid",
     lastName: "Highwind",
     email: "goodTea2@testmail.com",
+    username: "spaceX",
     password: "password1234",
   });
 
