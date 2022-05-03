@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
-import { useStoreContext } from "../../utils/GlobalState";
+import React, { useState } from "react";
+// import { useStoreContext } from "../../utils/GlobalState";
+import useScreenSize from "../../hooks/screenSize/useScreenSize";
 import { useQuery } from "@apollo/client";
-import {
-  UPDATE_CATEGORIES,
-  UPDATE_CURRENT_CATEGORY,
-} from "../../utils/actions";
 import { QUERY_CATEGORIES } from "../../utils/queries";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import Arrow from "react-arrows";
@@ -15,41 +12,41 @@ import Arrow from "react-arrows";
 //     .map((_, ind) => ({ id: `${ind}`}));
 
 function Categories() {
-  const [state, dispatch] = useStoreContext();
+  const { isDesktop } = useScreenSize();
+  const [selected, setSelected] = useState([]);
+  const { data } = useQuery(QUERY_CATEGORIES);
+  const isItemSelected = (id) => !!selected.find((el) => el === id);
 
-  const { categories } = state;
+  const categories = data?.categories || [];
+  console.log(categories);
 
-  const { data: categoryData } = useQuery(QUERY_CATEGORIES);
+  const handleClick =
+    (id) =>
+    ({ getItemById, scrollToItem }) => {
+      const itemSelected = isItemSelected(id);
 
-  useEffect(() => {
-    if (categoryData) {
-      dispatch({
-        type: UPDATE_CATEGORIES,
-        categories: categoryData.categories,
-      });
-    }
-  }, [categoryData, dispatch]);
-
-  const handleClick = (id) => {
-    dispatch({
-      type: UPDATE_CURRENT_CATEGORY,
-      currentCategory: id,
-    });
-  };
+      setSelected((currentSelected) =>
+        itemSelected
+          ? currentSelected.filter((el) => el !== id)
+          : currentSelected.concat(id)
+      );
+    };
+  console.log(selected);
   return (
-    <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-      {categories.map((item) => (
-        <div className="bully">
-          <CategoryCard
-            key={item._id}
-            onClick={() => {
-              handleClick(item._id);
-            }}
-          />
-          {item.name}
-        </div>
-      ))}
-    </ScrollMenu>
+    !isDesktop && (
+      <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+        {categories.map(({name, id}) => (
+          <div className="bully">
+            <CategoryCard
+              name={name}              
+              onClick={() => {
+                handleClick(id);
+              }}
+            />            
+          </div>
+        ))}
+      </ScrollMenu>
+    )
   );
 }
 
@@ -74,7 +71,15 @@ function RightArrow() {
   );
 }
 
-function CategoryCard({ onClick, selected, category, itemId, key }) {
+function CategoryCard({
+  onClick,
+  categories,
+  selected,
+  category,
+  itemId,
+  key,
+  name
+}) {
   const visibility = React.useContext(VisibilityContext);
   return (
     <div
@@ -87,7 +92,7 @@ function CategoryCard({ onClick, selected, category, itemId, key }) {
     >
       <div className="category-card">
         <div className="category-title">
-          <h2>{category}</h2>
+          <h2>{name}</h2>
         </div>
         {/* <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
                 <div>selected: {JSON.stringify(!!selected)}</div> */}
