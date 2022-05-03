@@ -76,7 +76,7 @@ mutation deletecomment($eventId: ID!, $commentBody: String!) {
     comments{
       _id
       commentBody
-      editedAt
+      deletedAt
       username
     }
   }
