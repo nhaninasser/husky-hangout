@@ -53,3 +53,18 @@ mutation addcomment($eventId: ID!, $commentBody: String!) {
   }
 }
 `;
+export const EDIT_COMMENT = gql`
+mutation editcomment($eventId: ID!, $commentBody: String!) {
+  editReaction(eventId: $eventId, commentBody: $commentBody){
+    _id
+    commentCount
+    comments{
+      _id
+      commentBody
+      editedAt
+      username
+    }
+  }
+}
+`;
+
