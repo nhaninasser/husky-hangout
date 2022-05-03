@@ -70,7 +70,7 @@ mutation editcomment($id:ID!) {
 
 export const DELETE_COMMENT = gql`
 mutation deletecomment($id: ID!) {
-  deleteReaction(eventId: $id){
+  deleteReaction(eventId: $id){1
     _id
     commentCount
     comments{
