@@ -68,3 +68,17 @@ mutation editcomment($eventId: ID!, $commentBody: String!) {
 }
 `;
 
+export const DELETE_COMMENT = gql`
+mutation deletecomment($eventId: ID!, $commentBody: String!) {
+  deleteReaction(eventId: $eventId, commentBody: $commentBody){
+    _id
+    commentCount
+    comments{
+      _id
+      commentBody
+      editedAt
+      username
+    }
+  }
+}
+`;
