@@ -1,11 +1,17 @@
 import { useReducer } from "react";
 import {  
+  UPDATE_EVENTS,
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY
 } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {  
+    case UPDATE_EVENTS:
+      return {
+        ...state,
+        events: [...action.events],
+      }
     case UPDATE_CATEGORIES:
       return {
         ...state,
