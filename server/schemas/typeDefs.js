@@ -8,8 +8,15 @@ const typeDefs = gql`
     events: [Event]
   }
 
+  type Category {
+    _id: ID
+    name: String
+  }
+
   type Event {
     _id: ID
+    eventName: String
+    eventDate: String
     eventText: String
     createdAt: String
     username: String
@@ -32,9 +39,10 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
-    user(username: String!): User
-    events(username: String): [Event]
+    user(username: String!): User    
+    events: [Event]
     event(_id: ID!): Event
+    categories: [Category]
   }
 
   type Mutation {

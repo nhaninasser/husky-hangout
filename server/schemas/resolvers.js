@@ -4,6 +4,9 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    categories: async () => {
+      return await Category.find();
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
@@ -23,9 +26,9 @@ const resolvers = {
       .select("-__v -password");
       // .populate("events");
     },
-    events: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Event.find(params).sort({ createdAt: -1 });
+    events: async (parent, args) => {
+      // const params = username ? { username } : {};
+      return Event.find(args).sort({ createdAt: -1 });
     },
     event: async (parent, { _id }) => {
       return Event.findOne({ _id });

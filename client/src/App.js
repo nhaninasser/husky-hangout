@@ -1,19 +1,38 @@
-import React from 'react';
-import './App.css';
-import FixedBottomNavigation from '../src/components/Footer';
+import React from "react";
+import "./App.css";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import FixedBottomNavigation from "../src/components/Footer";
 import EventsMobile from '../src/components/Events';
-import Categories from '../src/components/Categories';
-import { StoreProvider } from './utils/GlobalState';
+// import Categories from '../src/components/Categories';
+import { StoreProvider } from "./utils/GlobalState";
+
+const httpLink = createHttpLink({
+  uri: "http://localhost:3001/graphql",
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
+
+console.log(client);
 
 function App() {
   return (
-    <StoreProvider>
-      <div className="body main-background-color">
-      <Categories />
+    <ApolloProvider client={client}>
+    <StoreProvider>      
+        <div className="body main-background-color">
+          {/* <Categories /> */}
       <EventsMobile />
-      </div>
-      <FixedBottomNavigation/>
+        </div>
+        <FixedBottomNavigation />      
     </StoreProvider>
+    </ApolloProvider>
   );
 }
 

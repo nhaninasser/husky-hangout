@@ -1,42 +1,21 @@
-import {createContext, useContext, useEffect, useState } from 'react';
+import {createContext, useContext,  } from 'react';
+import { useProductReducer } from './reducers'
 
 //going to pass something to the react application
 const StoreContext = createContext();
+const { Provider } = StoreContext;
 
-export function StoreProvider({ children }) {
-    const [globalState, setGlobalState ] = useState({
-        selectedCategory: undefined,
-        categories: [
-            {
-                category: 'Sports',
-            },
-            {
-                category: 'Party',
-            },
-            {
-                category: 'Crafts',
-            }
-        ]
-        
-});
+const StoreProvider = ({ value = [], ...props}) => {
+    const [state, dispatch] = useProductReducer({
+        categories: [],
+        currentCategory: '',
+    });
 
-function selectCategory(categoryName) {
-    setGlobalState({...globalState, selectedCategory: categoryName});
+    return <Provider value={[state, dispatch]} {...props} />;    
+};
+
+const useStoreContext = () => {
+    return useContext(StoreContext);
 }
 
-useEffect( () => {
-    console.log("global State changed in Store", globalState);
-}, [globalState])
-
-return (
-    <StoreContext.Provider value={{globalState, selectCategory}}>
-        {children}
-    </StoreContext.Provider>
-);
-}
-
-export default function useStoreContext() {
-    const { globalState, selectCategory } = useContext(StoreContext);
-
-    return { globalState, selectCategory };
-}
+export { StoreProvider, useStoreContext };

@@ -3,11 +3,13 @@ const dateFormat = require("../utils/dateFormat");
 
 const eventSchema = new Schema(
   {
+    eventDate: {
+      type: String,
+    },
     eventText: {
       type: String,
       required: "You need to add an event!",
       minlength: 1,
-      maxlength: 280,
     },
     createdAt: {
       type: Date,
@@ -17,6 +19,11 @@ const eventSchema = new Schema(
     username: {
       type: String,
       required: true,
+    },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      require: true,
     },
   },
   {

@@ -2,52 +2,26 @@ import React, { useState } from 'react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import Arrow from 'react-arrows';
 import useScreenSize from '../../hooks/screenSize/useScreenSize';
-import hockey from './assets/images/hockey.png';
-import party from './assets/images/houseParty.jpg';
-import knitting from './assets/images/knitting.jpg';
-
-
+import { QUERY_EVENTS } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
 // const getItems = () =>
 //   Array(10)
 //     .fill(0)
 //     .map((_, ind) => ({ id: `${ind}`}));
 
-
-const getItems = () => [
-    {
-        id: 1,
-        event: 'hockey',
-        category: 'Sports',
-        image: hockey,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        attending: 52
-    },
-    {
-        id: 2,
-        event: 'House Party',
-        category: 'Party',
-        image: party,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        attending: 965
-    },
-    {
-        id: 3,
-        event: 'Knitting',
-        category: 'Crafts',
-        image: knitting,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        attending: 45
-    }
-];
-
 function EventsMobile() {
     const { isDesktop } = useScreenSize();
-    const [items, setItem] = useState(getItems);
+    // const [items, setItem] = useState(getItems);
     const [selected, setSelected] = useState([]);
     // const [position, setPosition] = React.useState(0);
-
+    const { data } = useQuery(QUERY_EVENTS);
     const isItemSelected = (id) => !!selected.find((el) => el === id);
+    
+    const events = data?.events || [];
+    console.log(events);
+
+    const [items, setItem] = useState(events);
 
     const handleClick =
         (id) =>
@@ -62,16 +36,15 @@ function EventsMobile() {
             };
     return !isDesktop && (
         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-            {items.map(({ id, event, category, image, description, attending }) => {
+            {items.map(({ eventName, eventDate, eventText, createdAt, username, id }) => {
                 return (
                 <Card
-                    itemId={id} // NOTE: itemId is required for track items
-                    title={event}
-                    category={category}
-                    myImg={image}
-                    description={description}
-                    attending={attending}
-                    key={id}
+                    itemId={id}
+                    eventName = {eventName}
+                    eventDate = {eventDate}
+                    eventText = {eventText}
+                    createdAt = {createdAt}
+                    username = {username}                    
                     onClick={handleClick(id)}
                     selected={isItemSelected(id)}
                 />
@@ -103,9 +76,10 @@ function RightArrow() {
     );
 }
 
-function Card({ onClick, selected, title, myImg, description, attending, itemId }) {
+function Card({ onClick, selected, eventName, eventDate, eventText, createdAt, username, itemId }) {
+    const { data } = useQuery(QUERY_EVENTS);
     const visibility = React.useContext(VisibilityContext);
-    console.log({ myImg })
+    // console.log({ myImg })
     const { isDesktop } = useScreenSize();
     return !isDesktop && (
         <div
@@ -116,18 +90,19 @@ function Card({ onClick, selected, title, myImg, description, attending, itemId 
             tabIndex={0}
         >
             <div className="event-card">
-                <div className="event-title"><h2>{title}</h2></div>
+                <div className="event-title"><h2>{eventName}</h2></div>
                 <div className='flex'>
-                    <img src={myImg} alt='' className="event-image"></img>
+                    <img src='' alt='' className="event-image"></img>
                 </div>
                 <div className="description-align">
-                    {/* <h3>Description</h3> */}
+                    <h3>Description</h3>
                 </div>
                 <div className="eventDescription">
-                    <h5 className="text">{description}</h5>
+                    <h5 className="text">{eventText}</h5>
                 </div>
                 <div className="attending">
-                    <h5>Attending: {attending}</h5>
+                    <h5>EventDate: {eventDate}</h5>
+                    <h5>Attending: </h5>
                 </div>
                 <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
                 <div>selected: {JSON.stringify(!!selected)}</div>
