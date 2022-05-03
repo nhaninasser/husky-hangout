@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import Arrow from 'react-arrows';
 import useScreenSize from '../../hooks/screenSize/useScreenSize';
+import { QUERY_EVENTS } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
 // const getItems = () =>
 //   Array(10)
@@ -10,11 +12,16 @@ import useScreenSize from '../../hooks/screenSize/useScreenSize';
 
 function EventsMobile() {
     const { isDesktop } = useScreenSize();
-    const [items, setItem] = useState(getItems);
+    // const [items, setItem] = useState(getItems);
     const [selected, setSelected] = useState([]);
     // const [position, setPosition] = React.useState(0);
-
+    const { data } = useQuery(QUERY_EVENTS);
     const isItemSelected = (id) => !!selected.find((el) => el === id);
+    
+    const events = data?.events || [];
+    console.log(events);
+
+    const [items, setItem] = useState(events);
 
     const handleClick =
         (id) =>
@@ -29,16 +36,15 @@ function EventsMobile() {
             };
     return !isDesktop && (
         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-            {items.map(({ id, event, category, image, description, attending }) => {
+            {items.map(({ eventName, eventDate, eventText, createdAt, username, id }) => {
                 return (
                 <Card
-                    itemId={id} // NOTE: itemId is required for track items
-                    title={event}
-                    category={category}
-                    myImg={image}
-                    description={description}
-                    attending={attending}
-                    key={id}
+                    itemId={id}
+                    eventName = {eventName}
+                    eventDate = {eventDate}
+                    eventText = {eventText}
+                    createdAt = {createdAt}
+                    username = {username}                    
                     onClick={handleClick(id)}
                     selected={isItemSelected(id)}
                 />
@@ -70,9 +76,10 @@ function RightArrow() {
     );
 }
 
-function Card({ onClick, selected, title, myImg, description, attending, itemId }) {
+function Card({ onClick, selected, eventName, eventDate, eventText, createdAt, username, itemId }) {
+    const { data } = useQuery(QUERY_EVENTS);
     const visibility = React.useContext(VisibilityContext);
-    console.log({ myImg })
+    // console.log({ myImg })
     const { isDesktop } = useScreenSize();
     return !isDesktop && (
         <div
@@ -83,18 +90,19 @@ function Card({ onClick, selected, title, myImg, description, attending, itemId 
             tabIndex={0}
         >
             <div className="event-card">
-                <div className="event-title"><h2>{title}</h2></div>
+                <div className="event-title"><h2>{eventName}</h2></div>
                 <div className='flex'>
-                    <img src={myImg} alt='' className="event-image"></img>
+                    <img src='' alt='' className="event-image"></img>
                 </div>
                 <div className="description-align">
-                    {/* <h3>Description</h3> */}
+                    <h3>Description</h3>
                 </div>
                 <div className="eventDescription">
-                    <h5 className="text">{description}</h5>
+                    <h5 className="text">{eventText}</h5>
                 </div>
                 <div className="attending">
-                    <h5>Attending: {attending}</h5>
+                    <h5>EventDate: {eventDate}</h5>
+                    <h5>Attending: </h5>
                 </div>
                 <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
                 <div>selected: {JSON.stringify(!!selected)}</div>

@@ -19,7 +19,7 @@ db.once("open", async () => {
 
   const events = await Event.insertMany([
     {
-      event: "hockey",
+      eventName: "hockey",
       category: categories[0]._id,
       // image: hockey,
       eventText:
@@ -28,7 +28,7 @@ db.once("open", async () => {
       attending: 52,
     },
     {
-      event: "House Party",
+      eventName: "House Party",
       category: categories[1]._id,
       // image: party,
       eventText:
@@ -37,7 +37,7 @@ db.once("open", async () => {
       attending: 965,
     },
     {
-      event: "Knitting",
+      eventName: "Knitting",
       category: categories[2]._id,
       // image: knitting,
       eventText:

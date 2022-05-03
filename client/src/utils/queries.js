@@ -1,7 +1,7 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_CATEGORIES = gql`
-  {
+  query catergories {
     categories {
       _id
       name
@@ -10,21 +10,16 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_EVENTS = gql`
-  query events($username: String) {
-    events(username: $username) {
-      _id
-      eventText
-      createdAt
-      username
-      commentCount
-      comments {
-        _id
-        createdAt
-        username
-        commentBody
-      }
-    }
+query Events {
+  events {
+    _id
+    eventName
+    eventDate
+    eventText
+    createdAt
+    username
   }
+}
 `;
 
 export const QUERY_EVENT = gql`
@@ -45,14 +40,12 @@ export const QUERY_EVENT = gql`
   }
 `;
 
-
-
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
       _id
       username
-      email      
+      email
       thoughts {
         _id
         eventText
@@ -64,32 +57,25 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ME = gql`
-  {
-    me {
-      _id
-      username
-      email      
-      events {
-        _id
-        eventText
-        createdAt
-        commentCount
-        comments {
-          _id
-          createdAt
-          commentBody
-          username
-        }            
+query Query {
+  me {
+    username
+    email
+    events {
+      eventDate
+      eventText
+      createdAt
     }
   }
-`;
+}
+`
 
 export const QUERY_ME_BASIC = gql`
   {
     me {
       _id
       username
-      email      
+      email
     }
   }
 `;

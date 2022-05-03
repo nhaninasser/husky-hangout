@@ -3,6 +3,9 @@ const dateFormat = require("../utils/dateFormat");
 
 const eventSchema = new Schema(
   {
+    eventDate: {
+      type: String,
+    },
     eventText: {
       type: String,
       required: "You need to add an event!",
