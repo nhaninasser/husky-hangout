@@ -6,6 +6,9 @@ const eventSchema = new Schema(
     eventDate: {
       type: String,
     },
+    eventName: {
+      type: String,
+    },
     eventText: {
       type: String,
       required: "You need to add an event!",
@@ -19,6 +22,11 @@ const eventSchema = new Schema(
     username: {
       type: String,
       required: true,
+    },
+    attending: {
+      type: Number,
+      min: 0,
+      default: 0,
     },
     category: {
       type: Schema.Types.ObjectId,

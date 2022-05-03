@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Event } = require("../models");
+const { User, Event, Category } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -9,21 +9,20 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id })
-          .select("-__v -password");
-          // .populate("events");
+        const userData = await User.findOne({ _id: context.user._id }).select(
+          "-__v -password"
+        );
+        // .populate("events");
         return userData;
       }
       throw new AuthenticationError("Not logged in");
     },
     users: async () => {
-      return User.find()
-      .select("-__v -password");
+      return User.find().select("-__v -password");
       // .populate("events");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username })
-      .select("-__v -password");
+      return User.findOne({ username }).select("-__v -password");
       // .populate("events");
     },
     events: async (parent, args) => {
@@ -32,7 +31,7 @@ const resolvers = {
     },
     event: async (parent, { _id }) => {
       return Event.findOne({ _id });
-    }
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
