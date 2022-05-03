@@ -54,8 +54,8 @@ mutation addcomment($eventId: ID!, $commentBody: String!) {
 }
 `;
 export const EDIT_COMMENT = gql`
-mutation editcomment($eventId: ID!, $commentBody: String!) {
-  editReaction(eventId: $eventId, commentBody: $commentBody){
+mutation editcomment($id:ID!) {
+  editReaction(eventId: $id){
     _id
     commentCount
     comments{
@@ -69,8 +69,8 @@ mutation editcomment($eventId: ID!, $commentBody: String!) {
 `;
 
 export const DELETE_COMMENT = gql`
-mutation deletecomment($eventId: ID!, $commentBody: String!) {
-  deleteReaction(eventId: $eventId, commentBody: $commentBody){
+mutation deletecomment($id: ID!) {
+  deleteReaction(eventId: $id){
     _id
     commentCount
     comments{
