@@ -37,6 +37,15 @@ db.once("open", async () => {
       attending: 965,
     },
     {
+      eventName: "90s Themed Summer Jam!",
+      category: categories[1]._id,
+      // image: party,
+      eventText:
+        "Ac tortor vitae purus faucibus ornare. Sem integer vitae justo eget magna fermentum iaculis. Neque ornare aenean euismod elementum. In egestas erat imperdiet sed euismod nisi porta lorem. Sit amet tellus cras adipiscing enim eu turpis. Metus vulputate eu scelerisque felis imperdiet. Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Felis eget nunc lobortis mattis aliquam faucibus. Adipiscing commodo elit at imperdiet dui accumsan. Massa enim nec dui nunc mattis enim ut tellus. Amet venenatis urna cursus eget nunc. Purus in massa tempor nec feugiat nisl pretium. Gravida neque convallis a cras semper auctor. ",
+      username: "WeinerMobile",
+      attending: 965,
+    },
+    {
       eventName: "Knitting",
       category: categories[2]._id,
       // image: knitting,
@@ -68,6 +77,14 @@ db.once("open", async () => {
     lastName: "Highwind",
     email: "goodTea2@testmail.com",
     username: "spaceX",
+    password: "password1234",
+  });
+
+  await User.create({
+    firstName: "Oscar",
+    lastName: "Meyer",
+    email: "bologna@testmail.com",
+    username: "WeinerMobile",
     password: "password1234",
   });
 

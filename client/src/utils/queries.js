@@ -18,6 +18,8 @@ query Events {
     eventText
     createdAt
     username
+    attending
+    category
   }
 }
 `;
@@ -29,6 +31,7 @@ export const QUERY_EVENT = gql`
       eventText
       createdAt
       username
+      attending
       commentCount
       comments {
         _id

@@ -35,7 +35,7 @@ function EventsMobile() {
             };
     return !isDesktop && (
         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-            {events.map(({ eventName, eventDate, eventText, createdAt, username, id, }) => {
+            {events.map(({ eventName, eventDate, eventText, createdAt, username, attending, id, }) => {
                 return (
                 <Card               
                     itemId={id}
@@ -43,7 +43,8 @@ function EventsMobile() {
                     eventDate = {eventDate}
                     eventText = {eventText}
                     createdAt = {createdAt}
-                    username = {username}                    
+                    username = {username} 
+                    attending = {attending}                   
                     onClick={handleClick(id)}
                     selected={isItemSelected(id)}
                 />
@@ -75,7 +76,7 @@ function RightArrow() {
     );
 }
 
-function Card({ onClick, selected, eventName, eventDate, eventText, createdAt, username, itemId }) {
+function Card({ onClick, selected, eventName, eventDate, eventText, createdAt, username, attending, itemId }) {
   
     const visibility = React.useContext(VisibilityContext);
     // console.log({ myImg })
@@ -101,11 +102,11 @@ function Card({ onClick, selected, eventName, eventDate, eventText, createdAt, u
                 </div>
                 <div className="attending">
                     <h5>EventDate: {eventDate}</h5>
-                    <h5>Attending: </h5>                    
+                    <h5>Attending: {attending}</h5>                    
                 </div>                
                 <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
                 <div>selected: {JSON.stringify(!!selected)}</div>
-                <h7>Created At: {createdAt}</h7>
+                <div>Created At: {createdAt}</div>
             </div>
             <div
                 style={{

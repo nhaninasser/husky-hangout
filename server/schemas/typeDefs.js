@@ -20,13 +20,15 @@ const typeDefs = gql`
     eventText: String
     createdAt: String
     username: String
+    attending: Int
+    category: String
     commentCount: Int
     comments: [Comment]
   }
 
   type Comment {
     _id: ID
-    reactionBody: String
+    commentBody: String
     createdAt: String
     username: String
   }
@@ -49,7 +51,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
     addEvent(eventText: String!): Event 
-    addReaction(reactionId: ID!, reactionBody: String!): Event     
+    addComment(commentId: ID!, commentBody: String!): Event     
   }
 `;
 
