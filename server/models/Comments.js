@@ -1,27 +1,27 @@
-const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 const commentSchema = new Schema(
   {
-    reactionBody: {
+    commentBody: {
       type: String,
       required: true,
-      maxlength: 500
+      maxlength: 500,
     },
     username: {
       type: String,
-      required: true
+      required: true,
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: timestamp => dateFormat(timestamp)
-    }
+      get: (timestamp) => dateFormat(timestamp),
+    },
   },
   {
     toJSON: {
-      getters: true
-    }
+      getters: true,
+    },
   }
 );
 

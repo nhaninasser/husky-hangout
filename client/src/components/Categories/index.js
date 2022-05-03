@@ -35,14 +35,14 @@ function Categories() {
   return (
     !isDesktop && (
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {categories.map(({name, id}) => (
+        {categories.map(({ name, id }) => (
           <div className="bully">
             <CategoryCard
-              name={name}              
+              name={name}
               onClick={() => {
                 handleClick(id);
               }}
-            />            
+            />
           </div>
         ))}
       </ScrollMenu>
@@ -78,7 +78,7 @@ function CategoryCard({
   category,
   itemId,
   key,
-  name
+  name,
 }) {
   const visibility = React.useContext(VisibilityContext);
   return (
@@ -94,13 +94,13 @@ function CategoryCard({
         <div className="category-title">
           <h2>{name}</h2>
         </div>
-        {/* <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
-                <div>selected: {JSON.stringify(!!selected)}</div> */}
+        <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
+        <div>selected: {JSON.stringify(!!selected)}</div>
       </div>
       <div
-      // style={{
-      //     height: '20px',
-      // }}
+        style={{
+          height: "20px",
+        }}
       />
     </div>
   );

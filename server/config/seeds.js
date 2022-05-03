@@ -1,7 +1,7 @@
 const db = require("./connection");
 const { Category, Event, User } = require("../models");
 
-// import hockey from '../../client/src/components/Events/assets/images/hockey.png';
+// import ignN from '../../client/src/components/Events/assets/images/hockey.png';
 // import party from '../../client/src/components/Events/assets/images/houseParty.jpg';
 // import knitting from '../../client/src/components/Events/assets/images/knitting.jpg';
 

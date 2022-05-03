@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import Arrow from "react-arrows";
+import hockey from "../Events/assets/images/hockey.png";
 import useScreenSize from "../../hooks/screenSize/useScreenSize";
 import { QUERY_EVENTS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
@@ -19,7 +20,7 @@ function EventsMobile() {
   const isItemSelected = (id) => !!selected.find((el) => el === id);
 
   const events = data?.events || [];
-//   console.log(events);
+  //   console.log(events);
 
   const handleClick =
     (id) =>
@@ -46,7 +47,8 @@ function EventsMobile() {
             id,
           }) => {
             return (
-              <Card
+              <Card   
+                key={id}             
                 itemId={id}
                 eventName={eventName}
                 eventDate={eventDate}
@@ -102,13 +104,26 @@ function Card({
   username,
   attending,
   itemId,
+  key
 }) {
+  const [img, setImg] = useState();
+
   const visibility = React.useContext(VisibilityContext);
   // console.log({ myImg })
   const { isDesktop } = useScreenSize();
+  useEffect(() => {
+    switch (eventName) {
+      case "hockey":
+        setImg(hockey);
+        break;
+      default:
+        console.error("no image found!");
+    }
+  }, []);
   return (
     !isDesktop && (
       <div
+      key={key}
         onClick={() => onClick(visibility)}
         style={{
           width: "400px",
@@ -120,7 +135,7 @@ function Card({
             <h2>{eventName}</h2>
           </div>
           <div className="flex">
-            <img src="" alt="" className="event-image"></img>
+            <img src={img} alt="" className="event-image"></img>
           </div>
           <div className="description-align">
             <h3>{username}</h3>
