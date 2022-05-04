@@ -6,19 +6,19 @@ import { QUERY_CATEGORIES } from "../../utils/queries";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import Arrow from "react-arrows";
 
-// const [catName] = useState( [
-//   {
-//       category: 'Sports',
-//   },
-//   {
-//       category: 'Party',
-//   },
-//   {
-//       category: 'Crafts',
-//   }
-// ]);
-
 function Categories() {  
+
+  const [items] = useState( [
+    {
+        category: 'Sports',
+    },
+    {
+        category: 'Party',
+    },
+    {
+        category: 'Crafts',
+    }
+  ]);
 
   const { isDesktop } = useScreenSize();
   const [selected, setSelected] = useState([]);
@@ -43,13 +43,13 @@ function Categories() {
   return (
     !isDesktop && (
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {categories.map(({ name, id }) => (
+        {items.map(({ category }) => (
           <div className="bully">
             <CategoryCard
-              name={name}
-              onClick={() => {
-                handleClick(id);
-              }}
+              itemId={category}
+              category={category}
+              onClick={handleClick(category)}
+              setSelected={isItemSelected(category)}
             />
           </div>
         ))}
@@ -82,21 +82,13 @@ function RightArrow() {
 function CategoryCard({
   onClick,
   selected,
+  category,
   itemId,
-  catName,
+  key
 }) {
 
-  // const [cat, setCat] = useState();
+  
   const visibility = React.useContext(VisibilityContext);
-  // useEffect(() => {
-  //   switch(catName){
-  //     case "Sports":
-  //       setCat(Sports);
-  //       break;
-  //       default:
-  //       console.error("no category found!");
-  //   }
-  // }, []);
   return (
     <div
       className="category-section"
@@ -107,10 +99,10 @@ function CategoryCard({
       tabIndex={0}
     >
       <div className="category-card">
-        <div className="category-title">          
+        <div className="category-title"> <h2>{category}</h2>         
         </div>
-        <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
-        <div>selected: {JSON.stringify(!!selected)}</div>
+        {/* <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
+        <div>selected: {JSON.stringify(!!selected)}</div> */}
       </div>
       <div
         style={{

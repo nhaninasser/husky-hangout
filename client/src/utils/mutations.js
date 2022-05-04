@@ -26,7 +26,7 @@ export const ADD_USER = gql`
 
 export const ADD_EVENT = gql`
   mutation addEvent($eventText: String!) {
-    addThought(eventText: $eventText) {
+    addEvent(eventText: $eventText) {
       _id
       eventText
       createdAt
@@ -52,4 +52,17 @@ export const ADD_COMMENT = gql`
       }
     }
   }
+`;
+
+export const DELETE_EVENT = gql`
+mutation DeleteEvent($eventId: ID!) {
+  deleteEvent(eventId: $eventId) {
+    _id
+    eventName
+    eventDate
+    eventText
+    createdAt
+    username
+  }
+}
 `;

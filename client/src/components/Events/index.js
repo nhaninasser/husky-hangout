@@ -145,10 +145,10 @@ function Card({
             <h5>EventDate: {eventDate}</h5>
             <h5>Attending: {attending}</h5>
           </div>
-          <div>
+          {/* <div>
             visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}
           </div>
-          <div>selected: {JSON.stringify(!!selected)}</div>
+          <div>selected: {JSON.stringify(!!selected)}</div> */}
         </div>
         <div
           style={{
