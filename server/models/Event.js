@@ -3,9 +3,6 @@ const dateFormat = require("../utils/dateFormat");
 
 const eventSchema = new Schema(
   {
-    eventName: {
-     type: String,
-    },
     eventDate: {
       type: String,
     },
@@ -36,13 +33,6 @@ const eventSchema = new Schema(
       ref: "Category",
       require: true,
     },
-  },
-  {
-    comments: {
-      type: String,
-      require: true,
-      maxlength: 500,
-    }
   },
   {
     toJSON: {
