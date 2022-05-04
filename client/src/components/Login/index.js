@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { LOGIN_USER } from "../utils/mutations";
-import Auth from "../utils/auth";
-import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
+import { useMutation } from '@apollo/client';
+import { TextField, Button, Alert, Container } from '@mui/material';
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -47,9 +48,13 @@ const LoginForm = () => {
     });
   };
 
+// return (
+//   <h1>Hello Login!</h1>
+// )
+
   return (
-    <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+    <Container >
+      <form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
@@ -58,44 +63,37 @@ const LoginForm = () => {
         >
           Something went wrong with your login credentials!
         </Alert>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Your email"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
+        <TextField
+        type="text"
+        placeholder="Your email"
+        name="email"
+        onChange={handleInputChange}
+        value={userFormData.email}
+        fullWidth
+        margin= "normal"
+        required />
+
+        <TextField
             type="password"
             placeholder="Your password"
             name="password"
             onChange={handleInputChange}
             value={userFormData.password}
             required
+            fullWidth
+            margin= "normal"
           />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
+  
         <Button
           disabled={!(userFormData.email && userFormData.password)}
           type="submit"
-          variant="success"
+          variant="contained"
         >
           Submit
         </Button>
-      </Form>
-    </>
+      </form>
+    </Container>
   );
 };
 
