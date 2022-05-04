@@ -2,25 +2,19 @@ import React, { useEffect, useState } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import Arrow from "react-arrows";
 import hockey from "../Events/assets/images/hockey.png";
+import party from "../Events/assets/images/houseParty.jpg";
+import knitting from "../Events/assets/images/knitting.jpg";
 import useScreenSize from "../../hooks/screenSize/useScreenSize";
 import { QUERY_EVENTS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 
-// const getItems = () =>
-//   Array(10)
-//     .fill(0)
-//     .map((_, ind) => ({ id: `${ind}`}));
-
 function EventsMobile() {
   const { isDesktop } = useScreenSize();
-  // const [items, setItem] = useState(getItems);
   const [selected, setSelected] = useState([]);
-  // const [position, setPosition] = React.useState(0);
   const { data } = useQuery(QUERY_EVENTS);
   const isItemSelected = (id) => !!selected.find((el) => el === id);
 
   const events = data?.events || [];
-  //   console.log(events);
 
   const handleClick =
     (id) =>
@@ -105,8 +99,6 @@ function Card({
   eventName,
   eventDate,
   eventText,
-  createdAt,
-  username,
   attending,
   itemId,
   key,
@@ -114,12 +106,20 @@ function Card({
   const [img, setImg] = useState();
 
   const visibility = React.useContext(VisibilityContext);
-  // console.log({ myImg })
   const { isDesktop } = useScreenSize();
   useEffect(() => {
     switch (eventName) {
       case "hockey":
         setImg(hockey);
+        break;
+      case "Knitting":
+        setImg(knitting);
+        break;
+      case "House Party":
+        setImg(party);
+        break;
+      case "90s Themed Summer Jam!":
+        setImg(party);
         break;
       default:
         console.error("no image found!");
@@ -142,9 +142,7 @@ function Card({
           <div className="flex">
             <img src={img} alt="" className="event-image"></img>
           </div>
-          <div className="description-align">
-            <h3>{username}</h3>
-          </div>
+          <div className="description-align"></div>
           <div className="eventDescription">
             <h5 className="text">{eventText}</h5>
           </div>
@@ -152,11 +150,10 @@ function Card({
             <h5>EventDate: {eventDate}</h5>
             <h5>Attending: {attending}</h5>
           </div>
-          <div>
+          {/* <div>
             visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}
           </div>
-          <div>selected: {JSON.stringify(!!selected)}</div>
-          <div>Created At: {createdAt}</div>
+          <div>selected: {JSON.stringify(!!selected)}</div> */}
         </div>
         <div
           style={{

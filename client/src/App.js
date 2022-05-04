@@ -8,10 +8,9 @@ import {
 } from "@apollo/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FixedBottomNavigation from "./components/Footer";
-import EventsMobile from "./components/Events";
 import Login from "./components/Login";
 import AccountMenu from "./components/Header";
-// import Categories from '../src/components/Categories';
+import EventsPage from "./pages/EventsPage";
 import { StoreProvider } from "./utils/GlobalState";
 
 const httpLink = createHttpLink({
@@ -31,12 +30,11 @@ function App() {
       <StoreProvider>
         <BrowserRouter>
           <AccountMenu></AccountMenu>
-          <div className="body main-background-color">
-            {/* /* <Categories } */}
+          <div className="body main-background-color">            
             <Routes>
               <Route
               path="/"
-              element={<EventsMobile />}
+              element={<EventsPage />}
               />
               <Route
               path="/login"
