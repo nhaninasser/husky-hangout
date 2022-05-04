@@ -12,6 +12,7 @@ import Login from "./components/Login";
 import AccountMenu from "./components/Header";
 import EventsPage from "./pages/EventsPage";
 import { StoreProvider } from "./utils/GlobalState";
+import SingleEvent from "./components/singleEvent";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
@@ -35,6 +36,10 @@ function App() {
               <Route
               path="/"
               element={<EventsPage />}
+              />
+              <Route
+              path="/event/:id"
+              element={<SingleEvent />}
               />
               <Route
               path="/login"
