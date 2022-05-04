@@ -6,10 +6,8 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import FixedBottomNavigation from "./components/Footer";
-import EventsMobile from "./components/Events";
-import Login from "./components/Login";
+import FixedBottomNavigation from "../src/components/Footer";
+import EventsMobile from '../src/components/Events';
 // import Categories from '../src/components/Categories';
 import { StoreProvider } from "./utils/GlobalState";
 
@@ -27,24 +25,13 @@ console.log(client);
 function App() {
   return (
     <ApolloProvider client={client}>
-      <StoreProvider>
-        <BrowserRouter>
-          <div className="body main-background-color">
-            {/* /* <Categories } */}
-            <Routes>
-              <Route
-              path="/"
-              element={<EventsMobile />}
-              />
-              <Route
-              path="/login"
-              element={<Login/>}
-              />
-            </Routes>
-          </div>
-          <FixedBottomNavigation />
-        </BrowserRouter>
-      </StoreProvider>
+    <StoreProvider>      
+        <div className="body main-background-color">
+          {/* <Categories /> */}
+      <EventsMobile />
+        </div>
+        <FixedBottomNavigation />      
+    </StoreProvider>
     </ApolloProvider>
   );
 }
