@@ -27,7 +27,7 @@ export default function FixedBottomNavigation() {
             }}
           >
             <BottomNavigationAction
-              label="Home"
+              label="Events"
               icon={<FaWolfPackBattalion />}
               href="/"
             />

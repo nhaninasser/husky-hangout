@@ -129,6 +129,7 @@ function Card({
   return (
     !isDesktop && (
       <div
+        className="max-height"
         onClick={() => onClick(visibility)}
         style={{
           width: "400px",

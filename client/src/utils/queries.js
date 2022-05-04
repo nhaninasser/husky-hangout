@@ -32,6 +32,7 @@ export const QUERY_EVENT = gql`
       eventText
       createdAt
       username
+      eventDate
       attending
       commentCount
       comments {

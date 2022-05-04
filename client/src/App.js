@@ -31,7 +31,7 @@ function App() {
       <StoreProvider>
         <BrowserRouter>
           <AccountMenu></AccountMenu>
-          <div className="body main-background-color">            
+          <div className="body main-background-color max-height">            
             <Routes>
               <Route
               path="/"
