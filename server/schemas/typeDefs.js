@@ -56,7 +56,8 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addEvent(eventText: String!): Event
+    addEvent(eventName: String!, eventText: String!, Category: String!): Event
+    deleteEvent(_id: ID!): Event
     addComment(commentId: ID!, commentBody: String!): Event
       }
 `;

@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import FixedBottomNavigation from "../src/components/Footer";
+import Categories from "../src/components/Categories";
 import EventsMobile from '../src/components/Events';
 // import Categories from '../src/components/Categories';
 import { StoreProvider } from "./utils/GlobalState";
@@ -27,7 +28,7 @@ function App() {
     <ApolloProvider client={client}>
     <StoreProvider>      
         <div className="body main-background-color">
-          {/* <Categories /> */}
+          <Categories />
       <EventsMobile />
         </div>
         <FixedBottomNavigation />      

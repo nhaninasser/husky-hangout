@@ -73,6 +73,9 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    deleteEvent: async (parent, { eventId }) => {
+      return Event.findOneAndDelete({_id: eventId})     
+    },
   },
 };
 

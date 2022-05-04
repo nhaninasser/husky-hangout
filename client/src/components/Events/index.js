@@ -94,8 +94,6 @@ function Card({
   eventName,
   eventDate,
   eventText,
-  createdAt,
-  username,
   attending,
   itemId,
   key,

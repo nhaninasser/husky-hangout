@@ -6,12 +6,20 @@ import { QUERY_CATEGORIES } from "../../utils/queries";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import Arrow from "react-arrows";
 
-// const getItems = () =>
-//   Array(10)
-//     .fill(0)
-//     .map((_, ind) => ({ id: `${ind}`}));
+// const [catName] = useState( [
+//   {
+//       category: 'Sports',
+//   },
+//   {
+//       category: 'Party',
+//   },
+//   {
+//       category: 'Crafts',
+//   }
+// ]);
 
-function Categories() {
+function Categories() {  
+
   const { isDesktop } = useScreenSize();
   const [selected, setSelected] = useState([]);
   const { data } = useQuery(QUERY_CATEGORIES);
@@ -73,14 +81,22 @@ function RightArrow() {
 
 function CategoryCard({
   onClick,
-  categories,
   selected,
-  category,
   itemId,
-  key,
-  name,
+  catName,
 }) {
+
+  // const [cat, setCat] = useState();
   const visibility = React.useContext(VisibilityContext);
+  // useEffect(() => {
+  //   switch(catName){
+  //     case "Sports":
+  //       setCat(Sports);
+  //       break;
+  //       default:
+  //       console.error("no category found!");
+  //   }
+  // }, []);
   return (
     <div
       className="category-section"
@@ -91,8 +107,7 @@ function CategoryCard({
       tabIndex={0}
     >
       <div className="category-card">
-        <div className="category-title">
-          <h2>{name}</h2>
+        <div className="category-title">          
         </div>
         <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
         <div>selected: {JSON.stringify(!!selected)}</div>
