@@ -1,38 +1,92 @@
-.App {
+.main-background-color {
+  background-color: rgb(124,135,142);
+  padding-top: 115px;
+  padding-bottom: 0px;
+  right: 0;
+}
+
+.event-card {
+  padding-bottom:161px;
+  margin-left: 37px;
+  margin-right: 37px;
+  height: 371px;
+  background-color: rgb(196,196,196);
+  border-radius: 9px; /* 5px rounded corners */
+}
+
+.category-card {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 37px;
+  margin-right: 37px;
+  height: 40px;
+  background-color: rgb(196,196,196);
+  border-radius: 9px; /* 5px rounded corners */
+}
+
+.category-section {
+  background-color: rgb(255,255,255);
+  height: 70px;
+  margin-bottom: 20px;
+  padding-top:5px;
+  padding-bottom:10px;
+}
+
+.category-title {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.eventDescription {
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-right:10px;
+  padding-left:10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background-color: rgb(255,255,255);
+  border-radius: 7px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.description-align {
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  vertical-align: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  padding-bottom: 28px;
 }
 
-.App-link {
-  color: #61dafb;
+.event-image {
+  width:299px;
+  padding-left: 13.5px;
+  padding-right: 13.5px;
+  border-radius: 30px;
+
+}
+.event-title {
+  margin: 0 auto;
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+  font-style: italic;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.attending {
+  margin: 0 auto;
+  display: flex;
+  vertical-align: middle;
+  justify-content: right;
+  align-items: right;
+  margin-right: 15px;
+  padding-bottom:5px;
+}
+
+.text {
+height: 100px;
+text-align: justify;
+padding: 5px;
+overflow: auto;
 }
