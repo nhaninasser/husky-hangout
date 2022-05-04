@@ -33,38 +33,43 @@ function EventsMobile() {
           : currentSelected.concat(id)
       );
     };
-  return (
-    !isDesktop && (
-      <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {events.map(
-          ({
-            eventName,
-            eventDate,
-            eventText,
-            createdAt,
-            username,
-            attending,
-            id,
-          }) => {
-            return (
-              <Card   
-                key={id}             
-                itemId={id}
-                eventName={eventName}
-                eventDate={eventDate}
-                eventText={eventText}
-                createdAt={createdAt}
-                username={username}
-                attending={attending}
-                onClick={handleClick(id)}
-                selected={isItemSelected(id)}
-              />
-            );
-          }
-        )}
-      </ScrollMenu>
-    )
-  );
+
+  if (isDesktop) {
+    return <div>Desktop is rendering</div>;
+  } else {
+    return (
+      !isDesktop && (
+        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+          {events.map(
+            ({
+              eventName,
+              eventDate,
+              eventText,
+              createdAt,
+              username,
+              attending,
+              id,
+            }) => {
+              return (
+                <Card
+                  key={id}
+                  itemId={id}
+                  eventName={eventName}
+                  eventDate={eventDate}
+                  eventText={eventText}
+                  createdAt={createdAt}
+                  username={username}
+                  attending={attending}
+                  onClick={handleClick(id)}
+                  selected={isItemSelected(id)}
+                />
+              );
+            }
+          )}
+        </ScrollMenu>
+      )
+    );
+  }
 }
 
 function LeftArrow() {
@@ -104,7 +109,7 @@ function Card({
   username,
   attending,
   itemId,
-  key
+  key,
 }) {
   const [img, setImg] = useState();
 
@@ -123,7 +128,7 @@ function Card({
   return (
     !isDesktop && (
       <div
-      key={key}
+        key={key}
         onClick={() => onClick(visibility)}
         style={{
           width: "400px",
