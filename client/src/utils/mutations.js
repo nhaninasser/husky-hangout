@@ -52,4 +52,36 @@ export const ADD_COMMENT = gql`
       }
     }
   }
+
+
+`;
+export const EDIT_COMMENT = gql`
+mutation editcomment($id:ID!) {
+  editReaction(eventId: $id){
+    _id
+    commentCount
+    comments{
+      _id
+      commentBody
+      editedAt
+      username
+    }
+  }
+}
+`;
+
+export const DELETE_COMMENT = gql`
+mutation deletecomment($id: ID!) {
+  deleteReaction(eventId: $id){1
+    _id
+    commentCount
+    comments{
+      _id
+      commentBody
+      deletedAt
+      username
+    }
+  }
+}
+
 `;
