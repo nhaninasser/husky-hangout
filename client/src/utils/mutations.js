@@ -13,8 +13,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($firstName: String!, lastName: String! $username: String!, $email: String!, $password: String!) {
-    addUser(firstName: $firstName, lastName: $lastName username: $username, email: $email, password: $password) {
+  mutation addUser($firstName: String!, $lastName: String!, $username: String!, $email: String!, $password: String!) {
+    addUser(firstName: $firstName, lastName: $lastName, username: $username, email: $email, password: $password) {
       token
       user {
         _id
@@ -52,4 +52,36 @@ export const ADD_COMMENT = gql`
       }
     }
   }
+
+
+`;
+export const EDIT_COMMENT = gql`
+mutation editcomment($id:ID!) {
+  editReaction(eventId: $id){
+    _id
+    commentCount
+    comments{
+      _id
+      commentBody
+      editedAt
+      username
+    }
+  }
+}
+`;
+
+export const DELETE_COMMENT = gql`
+mutation deletecomment($id: ID!) {
+  deleteReaction(eventId: $id){
+    _id
+    commentCount
+    comments{
+      _id
+      commentBody
+      deletedAt
+      username
+    }
+  }
+}
+
 `;
