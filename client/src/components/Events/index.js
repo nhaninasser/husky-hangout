@@ -7,6 +7,7 @@ import knitting from "../Events/assets/images/knitting.jpg";
 import useScreenSize from "../../hooks/screenSize/useScreenSize";
 import { QUERY_EVENTS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 function EventsMobile() {
   const { isDesktop } = useScreenSize();
@@ -27,6 +28,7 @@ function EventsMobile() {
           : currentSelected.concat(id)
       );
     };
+    console.log(events)
 
   if (isDesktop) {
     return <div>Desktop is rendering</div>;
@@ -42,20 +44,19 @@ function EventsMobile() {
               createdAt,
               username,
               attending,
-              id,
+              _id,
             }) => {
               return (
                 <Card
-                  key={id}
-                  itemId={id}
+                  _id={_id}
                   eventName={eventName}
                   eventDate={eventDate}
                   eventText={eventText}
                   createdAt={createdAt}
                   username={username}
                   attending={attending}
-                  onClick={handleClick(id)}
-                  selected={isItemSelected(id)}
+                  onClick={handleClick(_id)}
+                  selected={isItemSelected(_id)}
                 />
               );
             }
@@ -96,11 +97,11 @@ function RightArrow() {
 function Card({
   onClick,
   selected,
+  _id,
   eventName,
   eventDate,
   eventText,
   attending,
-  itemId,
   key,
 }) {
   const [img, setImg] = useState();
@@ -128,38 +129,42 @@ function Card({
   return (
     !isDesktop && (
       <div
-        key={key}
+        className="max-height"
         onClick={() => onClick(visibility)}
         style={{
           width: "400px",
         }}
         tabIndex={0}
       >
-        <div className="event-card">
-          <div className="event-title">
-            <h2>{eventName}</h2>
-          </div>
-          <div className="flex">
-            <img src={img} alt="" className="event-image"></img>
-          </div>
-          <div className="description-align"></div>
-          <div className="eventDescription">
-            <h5 className="text">{eventText}</h5>
-          </div>
-          <div className="attending">
-            <h5>EventDate: {eventDate}</h5>
-            <h5>Attending: {attending}</h5>
-          </div>
-          {/* <div>
+        <Link to={`/event/${_id}`} style={{
+          display: "block",
+        }}>
+          <div className="event-card">
+            <div className="event-title">
+              <h2>{eventName}</h2>
+            </div>
+            <div className="flex">
+              <img src={img} alt="" className="event-image"></img>
+            </div>
+            <div className="description-align"></div>
+            <div className="eventDescription">
+              <h5 className="text">{eventText}</h5>
+            </div>
+            <div className="attending">
+              <h5>EventDate: {eventDate}</h5>
+              <h5>Attending: {attending}</h5>
+            </div>
+            {/* <div>
             visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}
           </div>
           <div>selected: {JSON.stringify(!!selected)}</div> */}
-        </div>
-        <div
-          style={{
-            height: "200px",
-          }}
-        />
+          </div>
+          <div
+            style={{
+              height: "200px",
+            }}
+          />
+        </Link>
       </div>
     )
   );
