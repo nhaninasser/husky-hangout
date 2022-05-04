@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
-import './Main.css';
-import Event from './Event/Event';
+import '../../App.css';
+import Event from '../Events/index';
 import { GlobalContext } from '../context/GlobalState';
 
 const Main = () => {
