@@ -3,7 +3,7 @@ import '../../App.css';
 import Event from '../Event/Event';
 import { GlobalContext } from '../context/GlobalState';
 
-const Main = () => {
+const EventSchedule = () => {
     // hooks
     const [event, setEvent] = useState('');
     const [time, setTime] = useState('');
@@ -52,4 +52,4 @@ const Main = () => {
     );
 }
 
-export default Main;
+export default EventSchedule;
