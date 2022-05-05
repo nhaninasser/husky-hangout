@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import '../../App.css';
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import {
@@ -7,6 +8,7 @@ import {
   updateComment as updateCommentApi,
   deleteComment as deleteCommentApi,
 } from "../../Api";
+
 
 const Comments = ({ commentsUrl, currentUserId }) => {
   const [backendComments, setBackendComments] = useState([]);
@@ -58,6 +60,7 @@ const Comments = ({ commentsUrl, currentUserId }) => {
   }, []);
 
   return (
+    <div className="Event">
     <div className="comments">
       <h3 className="comments-title">Comments</h3>
       <div className="comment-form-title">Write comment</div>
@@ -78,6 +81,7 @@ const Comments = ({ commentsUrl, currentUserId }) => {
         ))}
       </div>
     </div>
+</div>
   );
 };
 
