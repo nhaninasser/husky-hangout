@@ -9,7 +9,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { setContext } from '@apollo/client/link/context';
 import FixedBottomNavigation from "./components/Footer";
 import Login from "./components/Login";
 import AccountMenu from "./components/Header";

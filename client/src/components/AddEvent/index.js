@@ -1,9 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../../App.css';
-import Event from '../Event/Event';
-import * as React from "react";
-import {useState} from "react";
-import "../../App.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Stack from '@mui/material/Stack';
@@ -16,8 +12,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import { useMutation } from "@apollo/client";
-import { ADD_EVENT } from "../../utils/mutations";
+// import { useMutation } from "@apollo/client";
+// import { ADD_EVENT } from "../../utils/mutations";
+// import { QUERY_EVENTS, QUERY_ME } from "../../utils/queries"; 
 
 
 const AddEvent = () => {
@@ -55,6 +52,28 @@ const AddEvent = () => {
     };
 
     const [category, setCategory] = React.useState('');
+
+    // const [addEvent, { error }] = useMutation(ADD_EVENT, {
+    //   update(cache, { data: { addEvent } }) {
+    //     try {
+          
+    //       const { events } = cache.readQuery({ query: QUERY_EVENTS });
+    //       cache.writeQuery({
+    //         query: QUERY_EVENTS,
+    //         data: { events: [addEvent, ...events] },
+    //       });
+    //     } catch (e) {
+    //       console.error(e);
+    //     }
+  
+       
+    //     const { me } = cache.readQuery({ query: QUERY_ME });
+    //     cache.writeQuery({
+    //       query: QUERY_ME,
+    //       data: { me: { ...me, thoughts: [...me.thoughts, addEvent] } },
+    //     });
+    //   },
+    // });
 
   const categoryHandleChange = (event) => {
     setCategory(event.target.value);
