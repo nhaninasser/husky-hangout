@@ -48,11 +48,11 @@ function App() {
               />
               <Route
               path="/addEvent"
-              element={<AddEvent></AddEvent>}
+              element={<AddEvent/>}
               />
               <Route
                 path= "/Comments"
-                element={<Comments></Comments>}
+                element={<Comments/>}
                 />
             </Routes>
           </div>
