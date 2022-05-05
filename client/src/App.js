@@ -14,7 +14,7 @@ import EventsPage from "./pages/EventsPage";
 import { StoreProvider } from "./utils/GlobalState";
 import SingleEvent from "./components/singleEvent";
 import AddEvent from "./components/AddEvent";
-
+import Comments from "./components/Comments/Comments";
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
 });
@@ -50,9 +50,13 @@ function App() {
               path="/addEvent"
               element={<AddEvent></AddEvent>}
               />
+              <Route
+                path= "/client/src/components/Comments/Comments.js"
+                element={<Comments></Comments>}
+                />
             </Routes>
           </div>
-          <FixedBottomNavigation />
+         <FixedBottomNavigation />
         </BrowserRouter>
       </StoreProvider>
     </ApolloProvider>
