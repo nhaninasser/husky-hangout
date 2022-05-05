@@ -51,7 +51,7 @@ function App() {
               element={<AddEvent></AddEvent>}
               />
               <Route
-                path= "/client/src/components/Comments/Comments.js"
+                path= "/Comments"
                 element={<Comments></Comments>}
                 />
             </Routes>
