@@ -13,7 +13,7 @@ import AccountMenu from "./components/Header";
 import EventsPage from "./pages/EventsPage";
 import { StoreProvider } from "./utils/GlobalState";
 import SingleEvent from "./components/singleEvent";
-
+import AddEvent from "./components/AddEvent";
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
 });
@@ -44,6 +44,10 @@ function App() {
               <Route
               path="/login"
               element={<Login/>}
+              />
+              <Route
+              path="/addEvent"
+              element={<AddEvent></AddEvent>}
               />
             </Routes>
           </div>
