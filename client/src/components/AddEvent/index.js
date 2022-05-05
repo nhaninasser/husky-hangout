@@ -1,3 +1,6 @@
+import React, {useState} from 'react';
+import '../../App.css';
+import Event from '../Event/Event';
 import * as React from "react";
 import {useState} from "react";
 import "../../App.css";
@@ -15,6 +18,7 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { useMutation } from "@apollo/client";
 import { ADD_EVENT } from "../../utils/mutations";
+
 
 const AddEvent = () => {
 
