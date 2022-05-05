@@ -28,9 +28,11 @@ export const QUERY_EVENT = gql`
   query event($id: ID!) {
     event(_id: $id) {
       _id
+      eventName
       eventText
       createdAt
       username
+      eventDate
       attending
       commentCount
       comments {

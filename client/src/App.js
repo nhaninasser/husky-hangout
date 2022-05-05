@@ -8,12 +8,16 @@ import {
 } from "@apollo/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FixedBottomNavigation from "./components/Footer";
-import EventsMobile from "./components/Events";
 import Login from "./components/Login";
 import AccountMenu from "./components/Header";
-// import Categories from '../src/components/Categories';
+import EventsPage from "./pages/EventsPage";
 import { StoreProvider } from "./utils/GlobalState";
+<<<<<<< HEAD
 import EventSchedule from "./components/EventSchedule";
+=======
+import SingleEvent from "./components/singleEvent";
+
+>>>>>>> 0f15782a56a6d461f4cce2b4b2deae86bc9bb7ab
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
 });
@@ -31,12 +35,15 @@ function App() {
       <StoreProvider>
         <BrowserRouter>
           <AccountMenu></AccountMenu>
-          <div className="body main-background-color">
-            {/* /* <Categories } */}
+          <div className="body main-background-color max-height">            
             <Routes>
               <Route
               path="/"
-              element={<EventsMobile />}
+              element={<EventsPage />}
+              />
+              <Route
+              path="/event/:id"
+              element={<SingleEvent />}
               />
               <Route
               path="/login"

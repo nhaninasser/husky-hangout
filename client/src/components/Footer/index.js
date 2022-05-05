@@ -6,7 +6,6 @@ import { FaWolfPackBattalion } from "react-icons/fa";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import Paper from "@mui/material/Paper";
 import useScreenSize from "../../hooks/screenSize/useScreenSize";
-import { Link } from 'react-router-dom';
 
 export default function FixedBottomNavigation() {
   const { isDesktop } = useScreenSize();
@@ -27,7 +26,7 @@ export default function FixedBottomNavigation() {
             }}
           >
             <BottomNavigationAction
-              label="Home"
+              label="Events"
               icon={<FaWolfPackBattalion />}
               href="/"
             />
