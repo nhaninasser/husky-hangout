@@ -34,7 +34,7 @@ const eventSchema = new Schema(
     category: {
       type: Schema.Types.ObjectId,
       ref: "Category",
-      require: true,
+      
     },
   },
   {
