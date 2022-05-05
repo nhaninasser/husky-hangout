@@ -9,6 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { setContext } from '@apollo/client/link/context';
 import FixedBottomNavigation from "./components/Footer";
 import Login from "./components/Login";
 import AccountMenu from "./components/Header";
@@ -16,6 +17,7 @@ import EventsPage from "./pages/EventsPage";
 import { StoreProvider } from "./utils/GlobalState";
 import SingleEvent from "./components/singleEvent";
 import AddEvent from "./components/AddEvent";
+import Comments from "./components/Comments/Comments";
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
 });
@@ -59,11 +61,15 @@ function App() {
               />
               <Route
               path="/addEvent"
-              element={<AddEvent></AddEvent>}
+              element={<AddEvent/>}
               />
+              <Route
+                path= "/Comments"
+                element={<Comments/>}
+                />
             </Routes>
           </div>
-          <FixedBottomNavigation />
+         <FixedBottomNavigation />
         </BrowserRouter>
       </StoreProvider>
     </ApolloProvider>

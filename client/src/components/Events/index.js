@@ -128,7 +128,7 @@ function Card({
       default:
         console.error("no image found!");
     }
-  }, []);
+  }, [eventName]);
   return (
     !isDesktop && (
       <div

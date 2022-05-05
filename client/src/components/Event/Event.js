@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Event = ({ item }) => {
-    const { deleteEvent } = deleteEvent;
+    const { deleteEvent } = Event; 
 
     return (
         <li>
