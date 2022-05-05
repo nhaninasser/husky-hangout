@@ -1,15 +1,14 @@
 import React, {useState, useContext} from 'react';
 import '../../App.css';
 import Event from '../Event/Event';
-import { GlobalContext } from '../context/GlobalState';
 
-const EventSchedule = () => {
+const AddEvent = () => {
     // hooks
-    const [event, setEvent] = useState('');
-    const [time, setTime] = useState('');
+    const [event, setEvent] = useState('Skiing');
+    const [time, setTime] = useState('9:00am');
 
-    const { addEvent } = useContext(GlobalContext);
-    const { events } = useContext(GlobalContext);
+    const { addEvent } = useState(event);
+    const { events } = useState(event);
 
     const onSubmit = e => {
         e.preventDefault();
@@ -37,8 +36,8 @@ const EventSchedule = () => {
                 </div>
             </div>
             <div className="Body">
-                <ul className="Events">
-                    {events.map(item => (<Event key={item.id} item={item} />))}
+                <ul className="Event">
+                    {event.at(item => (<Event key={item.id} item={item} />))}
                 </ul>
                 <div className="AddEvent">
                     <form onSubmit={onSubmit}>
@@ -52,4 +51,4 @@ const EventSchedule = () => {
     );
 }
 
-export default EventSchedule;
+export default AddEvent;

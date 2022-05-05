@@ -1,8 +1,7 @@
-import React, {useContext} from 'react';
-import { GlobalContext } from '../../context/GlobalState';
+import React from 'react';
 
 const Event = ({ item }) => {
-    const { deleteEvent } = useContext(GlobalContext);
+    const { deleteEvent } = deleteEvent;
 
     return (
         <li>
