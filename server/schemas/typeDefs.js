@@ -43,7 +43,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     events: [Event]
-    event(_id: ID!): Event
+    event(_id: String!): [Event]
     categories: [Category]
   }
 

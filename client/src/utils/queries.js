@@ -25,7 +25,7 @@ query Events {
 `;
 
 export const QUERY_EVENT = gql`
-  query event($id: ID!) {
+  query event($id: String!) {
     event(_id: $id) {
       _id
       eventName

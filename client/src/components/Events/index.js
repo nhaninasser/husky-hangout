@@ -5,17 +5,20 @@ import hockey from "../Events/assets/images/hockey.png";
 import party from "../Events/assets/images/houseParty.jpg";
 import knitting from "../Events/assets/images/knitting.jpg";
 import useScreenSize from "../../hooks/screenSize/useScreenSize";
-import { QUERY_EVENTS } from "../../utils/queries";
+import { QUERY_EVENT } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 
-function EventsMobile() {
+function EventsMobile(props) {
+  console.log(props.defaultId)
   const { isDesktop } = useScreenSize();
   const [selected, setSelected] = useState([]);
-  const { data } = useQuery(QUERY_EVENTS);
+  const { data } = useQuery(QUERY_EVENT,{
+    variables:{id:props.category? props.category: props.defaultId }
+  });
   const isItemSelected = (id) => !!selected.find((el) => el === id);
 
-  const events = data?.events || [];
+  const events = data?.event || [];
 
   const handleClick =
     (id) =>
