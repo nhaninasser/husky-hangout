@@ -30,7 +30,7 @@ export default function FixedBottomNavigation() {
               icon={<FaWolfPackBattalion />}
               href="/"
             />
-            <BottomNavigationAction label="Dashboard" icon={<ArchiveIcon />} />
+            <BottomNavigationAction label="Schedule" icon={<ArchiveIcon />} />
           </BottomNavigation>
         </Paper>
       </Box>

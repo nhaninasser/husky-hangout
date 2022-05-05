@@ -8,7 +8,10 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
+import Login from '@mui/icons-material/Login';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { Link } from "react-router-dom";
+import Auth from '../../utils/auth';
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,11 +22,16 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-        <Typography sx={{ minWidth: 100 }}>Profile</Typography>
+        <Typography sx={{ minWidth: 150 }}>Husky Hangout</Typography>
+        <Typography sx={{ minWidth: 100 }}></Typography>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -33,7 +41,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 70, height: 40 }}>Menu</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -72,18 +80,25 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
+        {Auth.loggedIn() ? (
+          <>
         <MenuItem>
-        <AddCircleOutlineIcon/>  Create Event
+        <AddCircleOutlineIcon/>  <IconButton href='/addEvent'>Create Event </IconButton>
         </MenuItem>
         <MenuItem>
-          <Avatar /> Edit Account
+        <IconButton href="/" onClick={logout}>
+          <Logout /> Logout
+          </IconButton>
         </MenuItem>
+        </>
+        ) : (
         <MenuItem>
           <ListItemIcon>
-            <Logout fontSize="small" />
+            <Login fontSize="small" />
           </ListItemIcon>
-          Logout
+          <IconButton href="/login">Login</IconButton>
         </MenuItem>
+        )}
       </Menu>
     </React.Fragment>
   );

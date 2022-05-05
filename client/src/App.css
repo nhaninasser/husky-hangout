@@ -116,3 +116,15 @@ overflow: auto;
   background-color: rgb(196,196,196);
   border-radius: 9px; /* 5px rounded corners */
 }
+
+.addEventTitle {
+align-items: center;
+justify-content: center;
+vertical-align: middle;
+}
+
+#outlined-name {
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
