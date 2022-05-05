@@ -57,7 +57,7 @@ const Comments = ({ commentsUrl, currentUserId }) => {
     getCommentsApi().then((data) => {
       setBackendComments(data);
     });
-  }, []);
+  }, [commentsUrl]);
 
   return (
     <div className="Event">
