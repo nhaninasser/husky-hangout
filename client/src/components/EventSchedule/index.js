@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import '../../App.css';
-import Event from '';
+import Event from '../Event/Event';
 import { GlobalContext } from '../context/GlobalState';
 
 const Main = () => {
@@ -26,6 +26,8 @@ const Main = () => {
         setEvent('');
         setTime('');
       }
+
+
 
     return (
         <div className="Content">
