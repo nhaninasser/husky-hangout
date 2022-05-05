@@ -12,7 +12,7 @@ export default function SingleEvent() {
 
   const event = data?.event || {};
 
-  console.log(event);
+  console.log(data);
 
   if (loading) {
     return <div>Loading...</div>;
