@@ -1,7 +1,7 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Event, Category } = require("../models");
 const { signToken } = require("../utils/auth");
-
+const {Schema, Types}=require("mongoose")
 const resolvers = {
   Query: {
     categories: async () => {
@@ -30,7 +30,11 @@ const resolvers = {
       return Event.find(args).sort({ createdAt: -1 });
     },
     event: async (parent, { _id }) => {
-      return Event.findOne({ _id });
+      console.log(_id)
+      //const id = Types.ObjectId(_id)
+      const events= await Event.find({category:_id});
+      console.log(events)
+      return events
     },
   },
   Mutation: {
