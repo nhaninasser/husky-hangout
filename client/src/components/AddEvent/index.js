@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useState} from "react";
 import "../../App.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -12,15 +13,44 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import { useMutation } from "@apollo/client";
+import { ADD_EVENT } from "../../utils/mutations";
 
 const AddEvent = () => {
+
+    // const [eventFormData, setEventFormData] = useState({
+    //     eventName:"",
+    //     eventDate: "",
+    //     eventText: "",
+    //     category: ""
+    // }) 
+
+    // const [addEvent, { error }] = useMutation(ADD_EVENT);
+
+    // const handleFormSubmit = async event => {
+    //     event.preventDefault();
+      
+    //     try {
+    //       // add thought to database
+    //       await addEvent({
+    //         variables: {}
+    //       });
+      
+    //       // clear form value
+    //     //   setText('');
+    //     //   setCharacterCount(0);
+    //     // } catch (e) {
+    //     //   console.error(e);
+    //     // }
+    //   };
+
     const [value, setValue] = React.useState(new Date(''));
 
     const handleChange = (newValue) => {
       setValue(newValue);
     };
 
-    const [age, setCategory] = React.useState('');
+    const [category, setCategory] = React.useState('');
 
   const categoryHandleChange = (event) => {
     setCategory(event.target.value);
@@ -28,7 +58,7 @@ const AddEvent = () => {
 
 
   return (
-    <div className="addEventT">
+    <div className="addEvent">
       <div>
         <Box
           component="form"
@@ -81,8 +111,8 @@ const AddEvent = () => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          label="Age"
+          value={category}
+          label="Category"
           onChange={categoryHandleChange}
         >
           <MenuItem value="Party">Party</MenuItem>
