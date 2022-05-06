@@ -36,7 +36,7 @@ Sign Up, Choose a category, and then find events by Category. We hope to allow u
 NoSQL/MongoDB, Apollo, Material UI
 
 ## Contributors
-Zachary Steuer, Sean M, James Mahoney, Shelley Soucie, Nasser Nasser
+Zachary Steuer, Sean Mckeag, James Mahoney, Shelley Soucie, Nasser Nasser
 
 ## Website
 https://husky-hangout.herokuapp.com/
