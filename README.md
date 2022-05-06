@@ -1,5 +1,13 @@
 # Husky Hangout
-    
+![React](https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Bootstrap](https://img.shields.io/badge/bootstrap%20-%23563D7C.svg?&style=for-the-badge&logo=bootstrap&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![node.js](https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white)
+![CSS](https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white)
+
+
+
+
 ## Table of Contents
 
 1. [Project Description]
@@ -28,7 +36,7 @@ Sign Up, Choose a category, and then find events by Category. We hope to allow u
 NoSQL/MongoDB, Apollo, Material UI
 
 ## Contributors
-Zachary Steuer, Sean M, James Mahoney, Shelly, Nasser Nasser
+Zachary Steuer, Sean M, James Mahoney, Shelley Soucie, Nasser Nasser
 
 ## Website
 https://husky-hangout.herokuapp.com/
