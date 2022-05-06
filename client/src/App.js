@@ -42,7 +42,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
-        {/* <BrowserRouter>
+        <BrowserRouter>
           <AccountMenu></AccountMenu>
           <div className="body main-background-color max-height">            
             <Routes>
@@ -69,8 +69,7 @@ function App() {
             </Routes>
           </div>
          <FixedBottomNavigation />
-        </BrowserRouter> */}
-        <h1>Hello App</h1>
+        </BrowserRouter>
       </StoreProvider>
     </ApolloProvider>
   );
